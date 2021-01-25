@@ -5,7 +5,7 @@
  *
  * @param {Array} queries - Array of strings corresponding to media queries.
  * @param {Array} values - Values matching media queries. Order matters.
- * @param defaultValue - Default value of no media query matches.
+ * @param defaultValue - Default value if no media query matches.
  *
  * @returns The value corresponding to the media query that matched.
  */

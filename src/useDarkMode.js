@@ -11,7 +11,7 @@
 
 export default useDark = () => {
   // Check user's browser/OS preference for dark mode. Use it to initialize the state.
-  const prefersDarkMode = useMedia(
+  const prefersDarkMode = useMediaQuery(
     ['(prefers-color-scheme: dark)'],
     [true],
     false

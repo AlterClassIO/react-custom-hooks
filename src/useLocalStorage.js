@@ -30,7 +30,7 @@ export default useLocalStorage = (key = '', initialValue = '') => {
   // Function to update the state and persist data in localStorage
   const setLocalStorageState = newState => {
     try {
-      // Support functional updates as with the regular useState hook
+      // Support functional updates like the regular useState hook
       const newStateValue =
         typeof newState === 'function' ? newState(state) : newState;
       // Update React state

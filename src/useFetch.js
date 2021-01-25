@@ -15,26 +15,32 @@ export default useFetch = (url = '', options = null) => {
   const [error, setError] = useState(null);
 
   useEffect(() => {
-    const runFetch = async () => {
-      try {
-        // Set loading status
-        setLoading(true);
-        // Use the Fetch API to fetch the data
-        // https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API
-        const res = await fetch(url, options);
-        const data = await res.json();
+    let isMounted = true;
+
+    // Set loading status
+    setLoading(true);
+    // Use the Fetch API to fetch the data
+    // https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API
+    fetch(url, options)
+      .then(res => res.json())
+      .then(data => {
         // Update state with fetched data
-        setData(data);
-      } catch (error) {
+        if (isMounted) {
+          setData(data);
+          setError(null);
+        }
+      })
+      .catch(error => {
         // Update state with error
-        setError(error);
-      } finally {
-        // Remove loading status
-        setLoading(false);
-      }
-    };
-    // 🔥 Fire!
-    runFetch();
+        if (isMounted) {
+          setError(error);
+          setData(null);
+        }
+      })
+      .finally(() => isMounted && setLoading(false));
+
+    // Cleanup
+    return () => (isMounted = false);
   }, [url, options]);
 
   return { loading, error, data };
