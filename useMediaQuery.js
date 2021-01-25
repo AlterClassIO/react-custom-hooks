@@ -7,7 +7,7 @@
  * @param {Array} values - Values matching media queries. Order matters.
  * @param defaultValue - Default value of no media query matches.
  *
- * @returns value - The value corresponding to the media query that matched.
+ * @returns The value corresponding to the media query that matched.
  */
 
 export default useMediaQuery = (queries = [], values = [], defaultValue) => {
