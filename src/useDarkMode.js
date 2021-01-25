@@ -1,5 +1,5 @@
 /**
- * useDarkMode - Easily implement and dark mode to your React app using this hook.
+ * useDarkMode - Easily implement and add dark mode to your React app with this custom hook.
  *
  * @author Greg D'Angelo <gregory.dangelo@alterclass.io>
  *
