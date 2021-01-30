@@ -87,7 +87,7 @@ A collection of easy-to-use React custom hooks.
       <div>
         <p>Your application's settings:</p>
         <pre>
-          <code>{appSettings}</code>
+          <code>{JSON.stringify(appSettings)}</code>
         </pre>
         <button onClick={() => setAppSettings(defaultSettings)}>Reset settings</button>
       </div>
