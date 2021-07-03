@@ -1,7 +1,7 @@
 const useMediaQuery = (queries = [], values = [], defaultValue) => {
   const mediaQueryList = queries.map(q => window.matchMedia(q));
   const getValue = useCallback(() => {
-    const index = mediaQueryList.findIndex(mql => mql.matches(q));
+    const index = mediaQueryList.findIndex(mql => mql.matches);
     return typeof values[index] !== 'undefined' ? values[index] : defaultValue;
   }, [mediaQueryList, values, defaultValue]);
 
@@ -12,7 +12,7 @@ const useMediaQuery = (queries = [], values = [], defaultValue) => {
     mediaQueryList.forEach(mql => mql.addEventListener('change', handler));
 
     return () =>
-      mediaQueryList.forEach(mql.removeEventListener('change', handler));
+      mediaQueryList.forEach(mql => mql.removeEventListener('change', handler));
   }, [getValue, mediaQueryList]);
 
   return value;
